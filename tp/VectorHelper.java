@@ -106,5 +106,33 @@ public class VectorHelper {
 	        	 System.out.println("assurez que les deux vectors sont inisialisé");
 	         }
 	     }
+		
+		 /**
+		 * une methde qui cherche la valeur maximal et la valeur minimal
+		 */
+		public void max_min()
+	     {
+	         if (is_initialiser == true)
+	         {
+	             max = Vector[0];
+	             min = Vector[0];
+	             for (int i = 1; i < n; i++)
+	             {
+	                 if (max < Vector[i])
+	                 {
+	                     max = Vector[i];
+	                 }
+	                 if (min > Vector[i])
+	                 {
+	                     min = Vector[i];
+	                 }
+	             }
+	         }
+	         else
+	         {
+	        	 System.out.println("le Vector n'est pas initialiser");
+	         }
+	     }
+
 		 
 }
