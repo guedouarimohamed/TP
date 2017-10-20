@@ -1,5 +1,7 @@
 package tp;
 
+import java.util.Scanner;
+
 import TP.VectorHelper;
 
 /**
@@ -49,6 +51,24 @@ public class VectorHelper {
 	     {
 	         return Vector;
 	     }
+		
+		/**
+		  * l'initialisation du vecteur en saisant les valeur une par une 
+		 */
+		public void init_Vector2()
+	    {
+			 Scanner scanner = new Scanner(System.in);
+			 System.out.print("Entrez la taille de vecteur: ");
+		     n = scanner.nextInt();
+	        Vector = new int[n];
+	        
+	        for (int i = 0; i < n; i++)
+	        {
+	        	System.out.print("V["+i+"]= ");
+	            Vector[i] = scanner.nextInt();;
+	        }
+	        is_initialiser = true;
+	    }
 		
 		/**
 		 * une methode qui trie les elements du vecteur d'une maniere croissante
