@@ -39,4 +39,12 @@ public class VectorHelper {
 	     {
 	      
 	     }
+		/**
+		  * 
+		 * @return retourner le vecteur ou se trouvent les valeur
+		 */
+		public int[] get_Vector()
+	     {
+	         return Vector;
+	     }
 }
