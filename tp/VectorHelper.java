@@ -120,4 +120,24 @@ public class VectorHelper {
 	         is_initialiser = true;
 	     }
 }
+/**
+ * une methode pour inverser les elements du vecteur
+ */
+public void invers_Vector()
+ {
+     int a;
+     if (is_initialiser == true)
+     {
+         for (int i = 0; i < n/2 ; i++)
+         {
+             a = Vector[n - 1 - i];
+             Vector[n - 1 - i] = Vector[i];
+             Vector[i] = a;
+         }
+     }
+     else
+     {
+    	 System.out.println("le Vector n'est pas initialiser");
+     }
+ }
 
