@@ -2,14 +2,12 @@ package tp;
 
 import java.util.Scanner;
 
-import TP.VectorHelper;
-
 /**
  * Date : 22 / 10 / 2017
  * @author Guedouari_Chouia_G7
  * @version final
  * 
- * C'est la class VrctorHelper pour manipuler les vecteurs
+ * C'est la class VectorHelper pour manipuler et fairebdes operationssur  les vecteurs
  */
 public class VectorHelper {
 	 /**
@@ -23,7 +21,7 @@ public class VectorHelper {
 		private int n;
 		 
 		 /**
-		 * true si le tableau est initialise ,false sinon
+		 * indique l'etat du vecteur :true si le vecteur est initialise ,false sinon
 		 */
 		private boolean is_initialiser = false;
 		
@@ -43,9 +41,18 @@ public class VectorHelper {
 	     {
 	       
 	     }
+		/**
+		  * getter du vecteur
+		 * @return retourner le vecteur ou se trouvent les valeur
+		 */
+		public int[] get_Vector()
+	     {
+	         return Vector;
+	     }
+		
 		 /**
-		  * C'est pour connaitre le nombre des element
-		 * @return retourner n( la taolle du vecteur)
+		  * C'est pour connaitre le nombre des element(ou la taille du vecteur)
+		 * @return retourner n( la taille du vecteur)
 		 */
 		public int get_n()
 	     {
@@ -63,7 +70,7 @@ public class VectorHelper {
 		 
 		 /**
 		  * pour savoir si le vecteur est initilisé
-		 * @return retourner true si le vecteur est initilisé,false sinon
+		 * @return retourner true si le vecteur est initialisé,false sinon
 		 */
 		public boolean get_is_initialiser() 
 	     {
@@ -77,7 +84,7 @@ public class VectorHelper {
 		
 		 /**
 		  * pour affecter la valeur maximal dans l'attribut max
-		 * @param max la valeur a affecté dans max
+		 * @param max la valeur a affecté dans this.max
 		 */
 		public void set(int max){this.max=max;}
 		 
@@ -88,7 +95,7 @@ public class VectorHelper {
 		public int get_min(){return min;}
 		 /**
 		  * affecter la valeur minimal dans l'attribut min
-		 * @param min la valeur a affecté dans min
+		 * @param min la valeur a affecté dans this.min
 		 */
 		public void set_min(int min){this.min=max;}
 		 
@@ -107,8 +114,8 @@ public class VectorHelper {
 	     }
 		 
 		 /**
-		  * l'initialisation du vecteur  
-		 * @param tab un qui vecteur qui contient les valeur a affecté dans le vecteur 
+		  * l'initialisation du vecteur dapres un tableau( pour simplifier l'excecution des tests unitaire)
+		 * @param tab un vecteur qui contient les valeur a affecté dans le vecteur 
 		 * @param n la taille du vecteur
 		 */
 		public void init_Vector(int tab[],int n)
@@ -122,14 +129,6 @@ public class VectorHelper {
 	             Vector[i] = tab[i];
 	         }
 	         is_initialiser = true;
-	     }
-		/**
-		  * 
-		 * @return retourner le vecteur ou se trouvent les valeur
-		 */
-		public int[] get_Vector()
-	     {
-	         return Vector;
 	     }
 		
 		/**
@@ -172,15 +171,15 @@ public class VectorHelper {
 	         }
 	         else
 	         {
-	        	 System.out.println("le Vector n'est pas initialiser");
+	        	 System.out.println("le Vecteur n'est pas initialisé");
 	         } 
 	     }
 		 
 		 
 		 /**
-		  * addition de deux vecteurs
+		  * addition de deux vecteurs (le vecteur qui appelle la fonction recoit le resultat)
 		 * @param V2 le vecteur a additioné avec V1
-		 * @throws Exception une exception se genere si les vecteurs ont des tailles differentes
+		 * @throws Exception : une exception se genere si les vecteurs ont des tailles differentes
 		 */
 		public void add(VectorHelper V2) throws Exception
 	     {
@@ -197,18 +196,18 @@ public class VectorHelper {
 	             }
 	             else
 	             {
-	                 throw new Exception("les longueurs de vecteurs ne sont pas egaux");
+	                 throw new Exception("les vecteurs ont des tailles differentes");
 
 	             }
 	         }
 	         else
 	         {
-	        	 System.out.println("assurez que les deux vectors sont inisialisé");
+	        	 System.out.println("assurez que les deux vecteurs sont inisialisés");
 	         }
 	     }
 		
 		 /**
-		 * une methde qui cherche la valeur maximal et la valeur minimal
+		 * une methde qui donne la valeur maximal et la valeur minimal du vecteur
 		 */
 		public void max_min()
 	     {
@@ -230,30 +229,58 @@ public class VectorHelper {
 	         }
 	         else
 	         {
-	        	 System.out.println("le Vector n'est pas initialiser");
+	        	 System.out.println("le Vecteur n'est pas initialisé");
 	         }
 	     }
+		/**
+		 * une methode pour inverser les elements du vecteur
+		 */
+		public void invers_Vector()
+		 {
+		     int a;
+		     if (is_initialiser == true)
+		     {
+		         for (int i = 0; i < n/2 ; i++)
+		         {
+		             a = Vector[n - 1 - i];
+		             Vector[n - 1 - i] = Vector[i];
+		             Vector[i] = a;
+		         }
+		     }
+		     else
+		     {
+		    	 System.out.println("le Vecteur n'est pas initialisé");
+		     }
+		 }
+		/**
+		 * une methode qui applique une fonction de la forme f(x)=ax+b sur tous les elements de vecteur
+		 * @param a le parametre a
+		 * @param b le parametre a
+		 */
+		public void fonc(int a,int b)
+		{
+			if (is_initialiser == true)
+	        {
+	            for (int i = 0; i < n ; i++)
+	            {
+	               
+	                Vector[i] = a * Vector[i] + b;
+	            }
+	        }
+	        else
+	        {
+	       	 System.out.println("le Vecteur n'est pas initialisé");
+	        }
+			
+		}
 
-		 
+		/**
+		 * c'est le main de l'
+		 * @param args array of String arguments.
+		 */
+		public static void main(String[] args) {
+			
+			
+		}
 }
-/**
- * une methode pour inverser les elements du vecteur
- */
-public void invers_Vector()
- {
-     int a;
-     if (is_initialiser == true)
-     {
-         for (int i = 0; i < n/2 ; i++)
-         {
-             a = Vector[n - 1 - i];
-             Vector[n - 1 - i] = Vector[i];
-             Vector[i] = a;
-         }
-     }
-     else
-     {
-    	 System.out.println("le Vector n'est pas initialiser");
-     }
- }
 
